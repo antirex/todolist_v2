@@ -1,0 +1,22 @@
+<%- include("header") %> 
+    <div class="container col-lg-6">
+        <h1><%= listTitle %> 😒🤦‍♂️ </h1>
+        
+    <div class="card">
+            <% newItem.forEach(function(result){ %> 
+              <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value=<%= result._id %> style="display: inline-block; margin-right:3%" onchange="this.form.submit()">
+                    <p style="display: inline-block;"><%= result.name%> </p>
+                </div>
+                <input type="hidden" name="listName" value=<%= listTitle %> ></input>
+              </form> 
+            <% }) %> 
+    </div>
+    <form action="/" method="POST" class="form">
+        <input type="text" name="addItem" class="input" placeholder="Write new items" autocomplete="off" required>
+        <button type="submit" class="btn btn-lg btn-outline-dark" name="list" value=<%= listTitle %>>Add item</button>
+    </form>
+</div>
+
+<%- include("footer") %> 
